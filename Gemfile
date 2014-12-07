@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+ruby '2.1.5'
 gem 'rails', '4.1.8'
+
+# new app defaults
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -20,8 +22,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
+# gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
@@ -37,4 +40,29 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+
+# foundation-rails – front-end framework
+# gibbon – access to the MailChimp API
+# google_drive – use Google Drive spreadsheets for data storage
+# high_voltage – for static pages like “about”
+# simple_form – forms made easy
+# We’ll also add utilities that make development easier:
+
+# better_errors – helps when things go wrong
+# quiet_assets – suppresses distracting messages in the log
+# rails_layout – generates files for an application layout
+
+
+# learn-rails
+gem 'foundation-rails'
+gem 'gibbon'
+gem 'google_drive'
+gem 'high_voltage'
+gem 'simple_form'
+group :development do
+  gem 'better_errors'
+  gem 'quiet_assets'
+  gem 'rails_layout'
+end
 
