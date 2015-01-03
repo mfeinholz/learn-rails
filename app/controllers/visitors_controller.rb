@@ -7,7 +7,7 @@ class VisitorsController < ApplicationController
       @owner = Owner.new
 
       # set up the flash object with some messages. flash messages are rendered by the _messages partial. 
-      flash[:notice] = 'Welcome!'
+      flash.now[:notice] = 'Welcome!'
       # use flash.now to prevent the flash message from rendering on any subsequent pages also
 
       # raise "forced crash to see a stack trace and how the better_errors gem we have installed handles errors in the browser"
