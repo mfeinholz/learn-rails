@@ -10,6 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ * mfnote: require-tree and require-self are ral directives, not comments. require_tree says to pull all css files from the tree. 
+ *         require_self directs the fx to make sure that any css in this file ends up at the browser also. 
+ *         This is also a manifest and can contain a list of css files located wherever to also be included.   
+ *
  *= require_tree .
  *= require_self
  */

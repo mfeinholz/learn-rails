@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--  
+> the ruby yield is where the view template is inserted. 
+> yield can be sent parameters that allow the insertion of other view panels and the like eg <yield :sidebar> the view then provides content for the main view and the sidebar with tags in the view like this: < content_for :sidebar do >bla bla < end >. 
+> notice the ruby syntax above. content_for appears to just be a method (but on which object/class??), :sidebar is a parameter, and then you have a block... i think, need to continue learning more about the details of Ruby. 
+> stylesheet_link_tag, javascript_include_tag, etc are ruby "dsl" functions (i guess) 
+> the render method results in this application layout being merged in with the view, but render can also render a view using a different layout template
+> an erb delimiter that does not contain the = sign will execute Ruby code but will not display the result in html, so you will often see this used to start/end Ruby blocks, just like above with the content_for method. 
+
+> 
+-->
+<html>
+<head>
+  <title>LearnRails</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <header>
+      <%# use the navigation 'partial' to render the nav header.  partials are found in app/views/<dir path/_<name>.html.erb%>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main">
+      <%# same thing here, render the _messages.html.erb partial, found in appviews/layouts%>
+      <%= render 'layouts/messages' %>
+
+      <%# and stick the view here. %>
+      <%= yield %>
+
+      <%# interesting that you use yield to render a view, but you use render to render a partial, ???%>
+    </main>
+  </body>
+</html>

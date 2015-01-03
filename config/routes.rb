@@ -55,7 +55,7 @@
 
 Rails.application.routes.draw do
 
-  # any request to the root will be directed to VisitorsController new
+  # any request to the root will be directed to VisitorsController new method
   root to: 'visitors#new' 
 
 end
