@@ -33,7 +33,7 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(secure_params)   # lame!! not real 2 way databinding afer all!!
     if @contact.valid?
-      # TODO save data
+      @contact.save
       # TODO send message
       flash[:notice] = "Message sent from #{@contact.name}"
       redirect_to root_path
@@ -47,4 +47,5 @@ private
   def secure_params
     params.require(:contact).permit(:name, :email, :content)
   end
-end  #end class
+
+end  #class
