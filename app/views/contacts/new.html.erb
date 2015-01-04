@@ -1,0 +1,22 @@
+<% content_for :title do %>Contact <% end %>
+<h3>Contact</h3>
+<div class="form">
+	<!--
+	# providing simple_form_for just the contact model is enough to gen the form 
+	# name and url - assuming we are following the convention - where the form 
+	# name is the class name, the route is i guess going to be found by that 
+	# contact_path variable/method/?? - again, all based on the 'contact' string 
+	# naming
+
+	# databinding is going on here, where the form fields are bound to the model props 
+	#   (?? so does that mean when we get back to the controller the model is already instanciated 
+	#     and populated with the form fields???  hmmm... we'll see)
+	-->
+	<%= simple_form_for @contact do |form| %>
+		<%= form.error_notification %>
+		<%= form.input :name, autofoucs: true %>
+		<%= form.input :email %>
+		<%= form.input :content, as: :text %>
+		<%= form.button :submit, 'Submit', class: 'submit' %>
+	<% end %>
+</div>
