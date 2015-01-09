@@ -58,7 +58,8 @@ Rails.application.routes.draw do
 # posting back the contact form will result in the ContactsController process_form method being invoked  (hmmm.. wonder how this gets set up in the html submit???)
 # any request to the root will be directed to VisitorsController new method
 # 
- resources :contacts, only: [:new, :create, :edit, :update]
- root to: 'visitors#new' 
+  resources :contacts, only: [:new, :create, :edit, :update]
+  resources :visitors, only: [:new, :create]
+  root to: 'visitors#new' 
 
 end

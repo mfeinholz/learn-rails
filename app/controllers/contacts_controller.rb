@@ -34,7 +34,9 @@ class ContactsController < ApplicationController
     @contact = Contact.new(secure_params)   # lame!! not real 2 way databinding afer all!!
     if @contact.valid?
       @contact.save
-      # TODO send message
+      # togetbakto: why the hell is the contact_email method accessible via the UserMailer class instead of an instance?
+      #  maybe UserMailer is not the class, but is some ruby magic that is referring to a variable that is an instance of the class????
+      UserMailer.contact_email(@contact).deliver
       flash[:notice] = "Message sent from #{@contact.name}"
       redirect_to root_path
     else

@@ -4,7 +4,9 @@ class VisitorsController < ApplicationController
 
 	  Rails.logger.debug 'DEBUG: entering new method'
       # instanciate an Owner model and make it available to views via the @owner instance variable. 
-      @owner = Owner.new
+      
+      @owner = Owner.new   
+      @visitor = Visitor.new
 
       # set up the flash object with some messages. flash messages are rendered by the _messages partial. 
       #flash.now[:notice] = 'Welcome!'
@@ -35,6 +37,35 @@ class VisitorsController < ApplicationController
 		
 
       Rails.logger.debug 'DEBUG: exiting VisitorsController.newOwner - owner name is ' + @owner.name
-	end
+	end #new
+
+  def create
+
+    Rails.logger.debug "MFDEBUG: entering VisitorsController.create."
+
+    @visitor = Visitor.new(secure_params)
+    Rails.logger.debug "@visitor.valid?: #{@visitor.valid?}"
+    if @visitor.valid?
+      @visitor.subscribe
+      flash[:notice] = "Signed up #{@visitor.email}."
+      redirect_to root_path
+  else
+      flash[:alert] = "why is @visitor not valid?: #{@visitor.valid?}, email: #{@visitor.email}"
+      
+      # mfnote: the redirect_to is going to the same place, but it loses the form validation errors
+      #   I really wonder how to do the form validation in javascript and how to provide custom 
+      #   validation error messages, so for example I could say enter a valid email address in the format xyz@someaddress.com
+
+      render :new
+    
+    end
+    
+  end # create
+
+  private
+
+  def secure_params
+    params.require(:visitor).permit(:email)
+  end # secure_params
 
 end
