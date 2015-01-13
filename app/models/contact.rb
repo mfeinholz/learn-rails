@@ -1,3 +1,5 @@
+require 'google_drive_v0'
+
 class Contact
   include ActiveModel::Model
 
@@ -26,7 +28,7 @@ private
     Rails.logger.debug "Debug gmail user: #{Rails.application.secrets.email_provider_username}"
     Rails.logger.debug "Debug gmail user: #{Rails.application.secrets.email_provider_password}"
     
-    connection = GoogleDrive.login(Rails.application.secrets.email_provider_username, Rails.application.secrets.email_provider_password)
+    connection = GoogleDriveV0.login(Rails.application.secrets.email_provider_username, Rails.application.secrets.email_provider_password)
     Rails.logger.debug "Debug gmail - already dead???"
     ss = connection.spreadsheet_by_title('Learn-Rails-Example')
     if ss.nil?
